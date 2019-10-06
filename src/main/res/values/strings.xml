@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">BookBlaze</string>
+    <string name="title">Blaze</string>
+    <string name="search_title">Search for a book</string>
+    <string name="find_title">Find a book that you like</string>
+    <string name="name_author">Author</string>
+    <string name="name_book">Book Name</string>
+    <string name="name_genre">Genre</string>
+    <string name="button_add">Add book</string>
+    <string name="button_find">Find</string>
+    <string name="name_date">Release Date</string>
+</resources>
