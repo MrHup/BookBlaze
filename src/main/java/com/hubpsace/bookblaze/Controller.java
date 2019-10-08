@@ -14,7 +14,7 @@ import okhttp3.Response;
 
 
 public class Controller {
-    public void send_request(){
+    public static void send_request(){
         try{
             OkHttpClient client = new OkHttpClient();
             String url = "https://secure-plateau-13343.herokuapp.com/books";
