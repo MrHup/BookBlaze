@@ -54,11 +54,16 @@ public class ShowBook extends AppCompatActivity {
                         R.anim.bounce);
                 button.startAnimation(animFadein);
 
-                InputMethodManager inputManager = (InputMethodManager)
-                        getSystemService(Context.INPUT_METHOD_SERVICE);
+                try{ // try to close keyboard
+                    InputMethodManager inputManager = (InputMethodManager)
+                            getSystemService(Context.INPUT_METHOD_SERVICE);
+                    if( getCurrentFocus()!=null)
+                        inputManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(),
+                            InputMethodManager.HIDE_NOT_ALWAYS);
+                }catch(Exception e){
+                    Log.d("main","Everything is fine, just the keyboard wasnt open");
+                }
 
-                inputManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(),
-                        InputMethodManager.HIDE_NOT_ALWAYS);
 
                 if( !input.getText().toString().equals("")){
                     Controller controller = new Controller(getApplicationContext(), ShowBook.this);

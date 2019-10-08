@@ -43,8 +43,7 @@ public class MainActivity extends AppCompatActivity {
         button2.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 // animation stuff
-                Animation animFadein = AnimationUtils.loadAnimation(getApplicationContext(),
-                        R.anim.zoom_in);
+                //Animation animFadein = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.zoom_in);
                 //button2.startAnimation(animFadein);
                 Intent myIntent = new Intent(getApplicationContext(), ShowBook.class);
                 startActivity(myIntent);
