@@ -3,8 +3,8 @@ package com.hubpsace.bookblaze;
 import android.app.Activity;
 import android.content.Context;
 import android.util.Log;
-import android.view.Gravity;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import org.jetbrains.annotations.NotNull;
@@ -34,6 +34,10 @@ public class Controller extends MainActivity {
         this.activity = activity;
     }
 
+    /*
+     *    Makes a post request to the server.
+     *    Uploads a book if the fields are completed correctly.
+     */
     public void post_request(String book_name, String author_name, String date_name, String genre){
 
         MediaType MEDIA_TYPE = MediaType.parse("application/json");
@@ -73,12 +77,12 @@ public class Controller extends MainActivity {
             }
 
         } catch(JSONException e){
-            e.printStackTrace();
+            e.printStackTrace(); // ERR
         }
 
         RequestBody body = RequestBody.create(MEDIA_TYPE, postdata.toString());
 
-        Request request = new Request.Builder()
+        Request request = new Request.Builder() // make request
                 .url(url)
                 .post(body)
                 .header("Accept", "application/json")
@@ -88,7 +92,7 @@ public class Controller extends MainActivity {
         client.newCall(request).enqueue(new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
-                String mMessage = e.getMessage().toString();
+                String mMessage = e.getMessage();
                 Log.w("failure Response", mMessage);
                 //call.cancel();
             }
@@ -102,10 +106,17 @@ public class Controller extends MainActivity {
         });
     }
 
-    public static void send_request(){
+
+    /*
+     *     Sends a get request to the DB,
+     *     returns a JSON object containing the response.
+     *     Used by the search book activity
+     */
+    public void send_request(String field, String input){
         try{
             OkHttpClient client = new OkHttpClient();
-            String url = "https://secure-plateau-13343.herokuapp.com/books";
+            // create request string
+            String url = "https://secure-plateau-13343.herokuapp.com/books/"+field+"/'"+input+"'";
             Request request = new Request.Builder()
                     .url(url)
                     .build();
@@ -120,16 +131,12 @@ public class Controller extends MainActivity {
                     if(response.isSuccessful()){
                         final String myResponse = response.body().string();
                         Log.d("finalR", myResponse);
-//                        MainActivity.this.runOnUiThread(new Runnable() {
-////                            @Override
-////                            public void run() {
-////                                // print response
-////
-////                                //TextView response_label = findViewById(R.id.response_textView);
-////                                //response_label.setText(myResponse);
-////                            }
-////                        });
-
+                        activity.runOnUiThread(new Runnable() {
+                            public void run() {
+                                TextView response_label = activity.findViewById(R.id.response_textView);
+                                response_label.setText(myResponse);
+                            }
+                        });
                     }
                 }
             });

@@ -1,4 +1,11 @@
 <resources>
+    <!-- List of possible requests to the server, defined for the filter-->
+    <string-array name="filter_array">
+        <item>Book Name</item>
+        <item>Author</item>
+        <item>Date</item>
+        <item>Genre</item>
+    </string-array>
     <string name="app_name">BookBlaze</string>
     <string name="title">Blaze</string>
     <string name="search_title">Search for a book</string>
@@ -9,4 +16,7 @@
     <string name="button_add">Add book</string>
     <string name="button_find">Find</string>
     <string name="name_date">Release Date</string>
+
+
+
 </resources>
