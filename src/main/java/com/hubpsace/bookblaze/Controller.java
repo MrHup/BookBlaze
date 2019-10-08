@@ -2,12 +2,14 @@ package com.hubpsace.bookblaze;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import org.jetbrains.annotations.NotNull;
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -135,6 +137,20 @@ public class Controller extends MainActivity {
                             public void run() {
                                 TextView response_label = activity.findViewById(R.id.response_textView);
                                 response_label.setText(myResponse);
+                                try{
+                                    //JSONArray json = new JSONArray(myResponse);
+                                    //Log.d("main", json.get(0).toString());
+                                    Intent myIntent = new Intent(context, ListActivity.class);
+                                    myIntent.putExtra("array",myResponse);
+                                    activity.startActivity(myIntent);
+
+
+                                }catch (Exception e){
+                                    Log.d("main", "An error occured");
+                                    e.printStackTrace();
+
+                                }
+
                             }
                         });
                     }
