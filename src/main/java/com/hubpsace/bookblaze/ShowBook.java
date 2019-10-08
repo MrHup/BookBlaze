@@ -2,11 +2,13 @@ package com.hubpsace.bookblaze;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -51,6 +53,12 @@ public class ShowBook extends AppCompatActivity {
                 Animation animFadein = AnimationUtils.loadAnimation(getApplicationContext(),
                         R.anim.bounce);
                 button.startAnimation(animFadein);
+
+                InputMethodManager inputManager = (InputMethodManager)
+                        getSystemService(Context.INPUT_METHOD_SERVICE);
+
+                inputManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(),
+                        InputMethodManager.HIDE_NOT_ALWAYS);
 
                 if( !input.getText().toString().equals("")){
                     Controller controller = new Controller(getApplicationContext(), ShowBook.this);
