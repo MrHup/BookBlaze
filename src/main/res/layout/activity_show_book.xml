@@ -4,10 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".ShowBook">
 
     <LinearLayout
-        android:id="@+id/linearLayout"
+        android:id="@+id/linearLayout2"
         android:layout_width="410dp"
         android:layout_height="160dp"
         android:background="@drawable/rounded_frame"
@@ -28,13 +28,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="sans-serif-black"
-            android:text="@string/find_title"
+            android:text="@string/search_title"
             android:textColor="#FFFFFF"
             android:textSize="16sp" />
     </LinearLayout>
 
     <EditText
-        android:id="@+id/input_bookName"
+        android:id="@+id/input_search_field"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="28dp"
@@ -43,63 +43,24 @@
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
-        android:importantForAutofill="no"/>
-
-    <EditText
-        android:id="@+id/input_author"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:ems="10"
-        android:hint="@string/name_author"
-        android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/input_bookName"
-        android:importantForAutofill="no"/>
-
-    <EditText
-        android:id="@+id/input_genre"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:ems="10"
-        android:hint="@string/name_genre"
-        android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/input_author"
-        android:importantForAutofill="no"/>
-
-    <EditText
-        android:id="@+id/input_date"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:ems="10"
-        android:inputType="date"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/input_genre"
-        android:hint="@string/name_date"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
         android:importantForAutofill="no"/>
 
     <Button
-        android:id="@+id/upload_book"
+        android:id="@+id/find_book"
         android:layout_width="213dp"
         android:layout_height="51dp"
         android:layout_marginTop="32dp"
         android:background="@drawable/rounded_button"
-        android:text="@string/button_add"
+        android:text="@string/button_find"
         android:textColor="#FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/input_date" />
+        app:layout_constraintTop_toBottomOf="@+id/input_search_field" />
 
     <Button
-        android:id="@+id/button_1"
+        android:id="@+id/button_2"
         android:layout_width="72dp"
         android:layout_height="72dp"
         android:layout_marginStart="24dp"
@@ -107,7 +68,6 @@
         android:background="@drawable/circle_button"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/upload_book"
         app:layout_constraintVertical_bias="1.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
