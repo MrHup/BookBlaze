@@ -15,6 +15,7 @@
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        android:transitionName="frame_label"
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
@@ -64,14 +65,13 @@
         android:id="@+id/input_genre"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
         android:ems="10"
         android:hint="@string/name_genre"
+        android:importantForAutofill="no"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/input_author"
-        android:importantForAutofill="no"/>
+        app:layout_constraintTop_toBottomOf="@+id/input_author" />
 
     <EditText
         android:id="@+id/input_date"
@@ -80,6 +80,7 @@
         android:layout_marginTop="8dp"
         android:ems="10"
         android:inputType="date"
+        android:transitionName="date_label"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/input_genre"
@@ -94,6 +95,7 @@
         android:background="@drawable/rounded_button"
         android:text="@string/button_add"
         android:textColor="#FFFFFF"
+        android:transitionName="main_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
@@ -107,8 +109,10 @@
         android:background="@drawable/circle_button"
         android:drawableTop="@drawable/ic_search_24px"
         android:paddingTop="12dp"
+        android:transitionName="switch_button"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.1"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/upload_book"
         app:layout_constraintVertical_bias="1.0" />

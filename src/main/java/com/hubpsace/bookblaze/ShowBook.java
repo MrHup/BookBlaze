@@ -2,9 +2,12 @@ package com.hubpsace.bookblaze;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ActivityOptions;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.util.Pair;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -26,6 +29,11 @@ public class ShowBook extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_book);
         input =findViewById(R.id.input_search_field);
+
+        // smooths out shared transitioning
+        getWindow().setEnterTransition(null);
+        getWindow().setAllowEnterTransitionOverlap(false);
+        getWindow().setAllowReturnTransitionOverlap(false);
         selected = "name";
         // create dropDown to select filter
         Spinner dropdown = findViewById(R.id.spinner1);
@@ -80,7 +88,24 @@ public class ShowBook extends AppCompatActivity {
             public void onClick(View v){
 //                Animation anim = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.bounce);
 //                button2.startAnimation(anim);
-                finish();
+
+                Intent myIntent = new Intent(getApplicationContext(), MainActivity.class);
+                //myIntent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP | Intent.FLAG_ACTIVITY_CLEAR_TOP); // remove last activity from stack
+                //myIntent.setFlags(Intent.FLAG_ACTIVITY_PREVIOUS_IS_TOP);
+                Pair[] pairs = new Pair[3];
+                pairs[0] = new Pair<View, String>(button,"main_button");
+                pairs[1] = new Pair<View, String> (findViewById(R.id.linearLayout2),"frame_label");
+                pairs[2] = new Pair<View, String> (button2,"switch_button");
+
+                ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(ShowBook.this, pairs);
+
+                // smooths out animations
+                getWindow().setExitTransition(null);
+                startActivity(myIntent, options.toBundle());
+
+                //finish();
+
+
             }
         });
 

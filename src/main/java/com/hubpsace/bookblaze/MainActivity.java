@@ -2,8 +2,10 @@ package com.hubpsace.bookblaze;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ActivityOptions;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Pair;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -15,6 +17,11 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        // smooths out shared transitioning
+        //getWindow().setEnterTransition(null);
+        //getWindow().setAllowEnterTransitionOverlap(false);
+        //getWindow().setAllowReturnTransitionOverlap(false);
 
         final Button button = findViewById(R.id.upload_book);
         button.setOnClickListener(new View.OnClickListener() {
@@ -46,7 +53,19 @@ public class MainActivity extends AppCompatActivity {
                 //Animation animFadein = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.zoom_in);
                 //button2.startAnimation(animFadein);
                 Intent myIntent = new Intent(getApplicationContext(), ShowBook.class);
-                startActivity(myIntent);
+
+                // creates shared transition animation between MainActivity and ShowBook
+                Pair[] pairs = new Pair[4];
+                pairs[0] = new Pair<View, String>(button,"main_button");
+                pairs[1] = new Pair<View, String>(findViewById(R.id.input_date),"date_label");
+                pairs[2] = new Pair<View, String> (findViewById(R.id.linearLayout),"frame_label");
+                pairs[3] = new Pair<View, String> (button2,"switch_button");
+
+                ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(MainActivity.this, pairs);
+
+                // smooths out animations
+                getWindow().setExitTransition(null);
+                startActivity(myIntent, options.toBundle());
             }
         });
     }

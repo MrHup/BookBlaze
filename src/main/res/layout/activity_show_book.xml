@@ -13,6 +13,7 @@
         android:background="@drawable/rounded_frame"
         android:gravity="center"
         android:orientation="vertical"
+        android:transitionName="frame_label"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -43,6 +44,7 @@
         android:hint="@string/name_book"
         android:importantForAutofill="no"
         android:inputType="textPersonName"
+        android:transitionName="date_label"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.484"
         app:layout_constraintStart_toStartOf="parent"
@@ -56,6 +58,7 @@
         android:background="@drawable/rounded_button"
         android:text="@string/button_find"
         android:textColor="#FFFFFF"
+        android:transitionName="main_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
@@ -65,12 +68,14 @@
         android:id="@+id/button_2"
         android:layout_width="72dp"
         android:layout_height="72dp"
-        android:layout_marginBottom="40dp"
+        android:layout_marginBottom="44dp"
         android:background="@drawable/circle_button"
         android:drawableTop="@drawable/ic_home_24px"
         android:paddingTop="10dp"
+        android:transitionName="switch_button"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.861"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Spinner
