@@ -86,25 +86,7 @@ public class ShowBook extends AppCompatActivity {
         final Button button2 = findViewById(R.id.button_2);  // back button
         button2.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
-//                Animation anim = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.bounce);
-//                button2.startAnimation(anim);
-
-                Intent myIntent = new Intent(getApplicationContext(), MainActivity.class);
-                //myIntent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP | Intent.FLAG_ACTIVITY_CLEAR_TOP); // remove last activity from stack
-                //myIntent.setFlags(Intent.FLAG_ACTIVITY_PREVIOUS_IS_TOP);
-                Pair[] pairs = new Pair[3];
-                pairs[0] = new Pair<View, String>(button,"main_button");
-                pairs[1] = new Pair<View, String> (findViewById(R.id.linearLayout2),"frame_label");
-                pairs[2] = new Pair<View, String> (button2,"switch_button");
-
-                ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(ShowBook.this, pairs);
-
-                // smooths out animations
-                getWindow().setExitTransition(null);
-                startActivity(myIntent, options.toBundle());
-
-                //finish();
-
+                supportFinishAfterTransition();
 
             }
         });

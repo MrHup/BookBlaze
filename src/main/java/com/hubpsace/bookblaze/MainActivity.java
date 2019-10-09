@@ -19,9 +19,9 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         // smooths out shared transitioning
-        //getWindow().setEnterTransition(null);
-        //getWindow().setAllowEnterTransitionOverlap(false);
-        //getWindow().setAllowReturnTransitionOverlap(false);
+        getWindow().setEnterTransition(null);
+        getWindow().setAllowEnterTransitionOverlap(false);
+        getWindow().setAllowReturnTransitionOverlap(false);
 
         final Button button = findViewById(R.id.upload_book);
         button.setOnClickListener(new View.OnClickListener() {
@@ -55,11 +55,12 @@ public class MainActivity extends AppCompatActivity {
                 Intent myIntent = new Intent(getApplicationContext(), ShowBook.class);
 
                 // creates shared transition animation between MainActivity and ShowBook
-                Pair[] pairs = new Pair[4];
+                Pair[] pairs = new Pair[5];
                 pairs[0] = new Pair<View, String>(button,"main_button");
                 pairs[1] = new Pair<View, String>(findViewById(R.id.input_date),"date_label");
                 pairs[2] = new Pair<View, String> (findViewById(R.id.linearLayout),"frame_label");
                 pairs[3] = new Pair<View, String> (button2,"switch_button");
+                pairs[4] = new Pair<View, String> (findViewById(R.id.input_author),"name_picker");
 
                 ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(MainActivity.this, pairs);
 

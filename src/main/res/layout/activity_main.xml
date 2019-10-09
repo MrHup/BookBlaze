@@ -52,7 +52,7 @@
         android:id="@+id/input_author"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:transitionName="name_picker"
         android:ems="10"
         android:hint="@string/name_author"
         android:inputType="textPersonName"
